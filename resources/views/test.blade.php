@@ -14,5 +14,10 @@
         <p>x-data count: <span x-text="count"></span></p>
     </div>
 
+    <div class="bg-red-500 text-white p-4">
+        Test Style
+    </div>
+
+
 </body>
 </html>

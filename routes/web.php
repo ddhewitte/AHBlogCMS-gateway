@@ -9,3 +9,6 @@ Route::get('/', function () {
 Route::get('/test', function () {
     return view('test');
 });
+
+//Blog routing
+Route::resource('/blog', \App\Http\Controllers\BlogController::class);

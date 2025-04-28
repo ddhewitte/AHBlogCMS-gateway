@@ -11,4 +11,5 @@ Route::get('/test', function () {
 });
 
 //Blog routing
-Route::resource('/blog', \App\Http\Controllers\BlogController::class);
+Route::get('/', [\App\Http\Controllers\BlogController::class, 'index']);
+Route::get('/blog', [\App\Http\Controllers\BlogController::class, 'refresh']);

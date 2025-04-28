@@ -12,4 +12,4 @@ Route::get('/test', function () {
 
 //Blog routing
 Route::get('/', [\App\Http\Controllers\BlogController::class, 'index']);
-Route::get('/blog', [\App\Http\Controllers\BlogController::class, 'refresh']);
+Route::get('/blog/refresh', [\App\Http\Controllers\BlogController::class, 'refresh']);

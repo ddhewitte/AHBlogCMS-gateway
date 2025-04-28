@@ -31,18 +31,20 @@
                 </tr>
             </thead>
             <tbody>
-                @forelse($blog as $blogData)
-                <tr class="hover:bg-gray-100 border-b">
-                    <td class="px-4 py-2">{{ $blogData->blog_title }}</td>
-                    <td class="px-4 py-2">{{ $blogData->blog_author }}</td>
-                    <td class="px-4 py-2">{{ $blogData->created_at }}</td>
-                    <td class="px-4 py-2"><button>Ubah Blog</button>| <button>Hapus</button></td>
-                </tr>
-                @empty
-                <div class="alert alert-danger">
-                    Data Products belum Tersedia.
-                </div>
-                @endforelse
+                <template x-for="blog in blogs" :key="blog.id">
+                    <tr class="hover:bg-gray-100 border-b">
+                        <td class="px-4 py-2" x-text="blog.blog_title"></td>
+                        <td class="px-4 py-2" x-text="blog.blog_author"></td>
+                        <td class="px-4 py-2" x-text="blog.blog_created_at"></td>
+                        <td class="px-4 py-2"><button>Ubah Blog</button> | <button>Hapus</button></td>
+                    </tr>
+                </template>
+
+                <template x-if="blogs.length === 0">
+                    <div class="p-2">
+                        Data Products belum Tersedia.
+                    </div>
+                </template>
             </tbody>
         </table>
     </div>
@@ -52,10 +54,10 @@ function blogData() {
     return {
         blogs: [],
         refreshData() {
-            fetch('/blog')
+            fetch('/blog/refresh')
                 .then(res => res.json())
                 .then(data => {
-                    console.log(data)
+                    this.blogs = data;
                 });
         }
     }

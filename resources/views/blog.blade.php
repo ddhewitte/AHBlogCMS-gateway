@@ -7,17 +7,22 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body>
-<div class="container mx-auto px-4 py-6">
+<div class="container mx-auto px-4 py-6"  x-data="blogData()" x-init="refreshData()">
     <div class="flex justify-between items-center mb-4">
         <h2 class="text-xl font-semibold text-gray-700">Data User</h2>
-        <a href="#" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition">
-            + Add User
-        </a>
+        <div class="flex space-x-2">
+            <a href="#" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition">
+                + Add User
+            </a>
+            <a @click="refreshData" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition">
+                Refresh Data
+            </a>
+        </div>
     </div>
 
     <div class="overflow-x-auto rounded-lg shadow-md">
         <table class="min-w-full bg-white border border-gray-200 text-sm text-left">
-            <thead class="bg-gray-500 text-white">
+            <thead class="bg-gray-400 text-white">
                 <tr>
                     <th class="px-4 py-3 border-b">Title</th>
                     <th class="px-4 py-3 border-b">Author</th>
@@ -42,6 +47,19 @@
         </table>
     </div>
 </div>
-
+<script>
+function blogData() {
+    return {
+        blogs: [],
+        refreshData() {
+            fetch('/blog')
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data)
+                });
+        }
+    }
+}
+</script>
 </body>
 </html>

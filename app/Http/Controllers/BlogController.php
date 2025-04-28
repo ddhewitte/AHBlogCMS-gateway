@@ -13,4 +13,11 @@ class BlogController extends Controller
         $blog = Blog::latest()->get();
         return view( view: 'blog', data: compact('blog') );
     }
+
+    //refresh data
+    public function refresh()
+    {
+        $blog = Blog::latest()->get();
+        return response()->json($blog);
+    }
 }

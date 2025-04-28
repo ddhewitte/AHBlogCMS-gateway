@@ -26,14 +26,18 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach($blog as $blogData)
+                @forelse($blog as $blogData)
                 <tr class="hover:bg-gray-100 border-b">
                     <td class="px-4 py-2">{{ $blogData->blog_title }}</td>
                     <td class="px-4 py-2">{{ $blogData->blog_author }}</td>
                     <td class="px-4 py-2">{{ $blogData->created_at }}</td>
                     <td class="px-4 py-2"><button>Ubah Blog</button>| <button>Hapus</button></td>
                 </tr>
-                @endforeach
+                @empty
+                <div class="alert alert-danger">
+                    Data Products belum Tersedia.
+                </div>
+                @endforelse
             </tbody>
         </table>
     </div>

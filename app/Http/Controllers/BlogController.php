@@ -11,7 +11,7 @@ class BlogController extends Controller
     public function index()
     {
         $blog = Blog::latest()->get();
-        return view( view: 'blog', data: compact('blog') );
+        return view( view: 'blog/blog', data: compact('blog') );
     }
 
     //refresh data
@@ -19,5 +19,11 @@ class BlogController extends Controller
     {
         $blog = Blog::latest()->get();
         return response()->json($blog);
+    }
+
+    //add data
+    public function add()
+    {
+        return view( view: 'blog/blog_add' );
     }
 }

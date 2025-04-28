@@ -11,12 +11,8 @@
     <div class="flex justify-between items-center mb-4">
         <h2 class="text-xl font-semibold text-gray-700">Data User</h2>
         <div class="flex space-x-2">
-            <a href="#" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition">
-                + Add User
-            </a>
-            <a @click="refreshData" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition">
-                Refresh Data
-            </a>
+            <button class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"><a href="{{ url('blog/add') }}">Add New</a></button>
+            <button @click="refreshData" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition">Refresh</button>
         </div>
     </div>
 

@@ -7,7 +7,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body>
-<div class="container mx-auto px-4 py-6"  x-data="blogData()" x-init="refreshData()">
+<div class="container mx-auto px-4 py-6" x-data="blogDataInput()">
 
     <div class="flex justify-between items-center mb-4">
         <h2 class="text-xl font-semibold text-gray-700">Add Data User</h2>
@@ -22,31 +22,44 @@
                 <tr>
                     <td class="p-4">Blog Title</td>
                     <td class="p-4">:</td>
-                    <td class="p-4"><input type="text" name="blog_title" class="block border  min-w-0 w-100 grow py-1.5 pr-3 pl-1 text-base text-gray-900 placeholder:text-gray-400 focus:outline-none sm:text-sm/6"></td>
+                    <td class="p-4"><input x-model="form.blog_title" type="text" name="blog_title" class="block border  min-w-0 w-100 grow py-1.5 pr-3 pl-1 text-base text-gray-900 placeholder:text-gray-400 focus:outline-none sm:text-sm/6"></td>
                 </tr>
                 <tr>
                     <td class="p-4">Blog Content</td>
                     <td class="p-4">:</td>
-                    <td class="p-4"><textarea name="blog_content" class="block border  min-w-0 w-100 grow py-1.5 pr-3 pl-1 text-base text-gray-900 placeholder:text-gray-400 focus:outline-none sm:text-sm/6"></textarea></td>
+                    <td class="p-4"><textarea x-model="form.blog_content" name="blog_content" class="block border  min-w-0 w-100 grow py-1.5 pr-3 pl-1 text-base text-gray-900 placeholder:text-gray-400 focus:outline-none sm:text-sm/6"></textarea></td>
                 </tr>
                 <tr>
                     <td class="p-4">Blog Author</td>
                     <td class="p-4">:</td>
-                    <td class="p-4"><input type="text" name="blog_author" class="block border  min-w-0 w-100 grow py-1.5 pr-3 pl-1 text-base text-gray-900 placeholder:text-gray-400 focus:outline-none sm:text-sm/6"></td>
+                    <td class="p-4"><input type="text" x-model="form.blog_author" name="blog_author" class="block border  min-w-0 w-100 grow py-1.5 pr-3 pl-1 text-base text-gray-900 placeholder:text-gray-400 focus:outline-none sm:text-sm/6"></td>
                 </tr>
                 <tr>
                     <td class="p-4">Blog Images</td>
                     <td class="p-4">:</td>
-                    <td class="p-4"><input type="file" name="blog_images" class="block border  min-w-0 w-100 row py-1.5 pr-3 pl-1 text-base text-gray-900 placeholder:text-gray-400 focus:outline-none sm:text-sm/6"></td>
+                    <td class="p-4"><input @change="handleFileUpload" type="file" name="blog_images" class="block border  min-w-0 w-100 row py-1.5 pr-3 pl-1 text-base text-gray-900 placeholder:text-gray-400 focus:outline-none sm:text-sm/6"></td>
                 </tr>
                 <tr>
                     <td class="p-4"></td>
                     <td class="p-4"></td>
-                    <td class="p-4"><button class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition">Submit</button></td>
+                    <td class="p-4"><button @click="submitForm" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition">Submit</button></td>
                 </tr>
             </tbody>
         </table>
     </div>
 </div>
 </body>
+<script>
+    function blogDataInput(){
+        return {
+            form: {
+
+            },
+            submitForm(){
+                console.log('anu');
+            }
+        }
+        
+    }
+</script>
 </html>

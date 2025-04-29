@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Add | Blog Page</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
@@ -53,10 +54,44 @@
     function blogDataInput(){
         return {
             form: {
-
+                blog_title: '',
+                blog_content: '',
+                blog_author: '',
+                blog_images: null,
             },
-            submitForm(){
-                console.log('anu');
+            handleFileUpload(event) {
+                this.form.blog_images = event.target.files[0];
+            },
+            async submitForm(){
+                const formData = new FormData();
+
+                formData.append('blog_title', this.form.blog_title);
+                formData.append('blog_content', this.form.blog_content);
+                formData.append('blog_author', this.form.blog_author);
+                if (this.form.blog_images) {
+                    formData.append('blog_images', this.form.blog_images);
+                }
+
+                try {
+                    const response = await fetch('/blog/add/process', {
+                        method: 'POST',
+                        headers: {
+                            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                        },
+                        body: formData
+                    });
+
+                    const result = await response.json();
+                    alert('Data berhasil ditambahkan');
+                    // Reset form
+                    this.form.blog_title = '';
+                    this.form.blog_content = '';
+                    this.form.blog_author = '';
+                    this.form.blog_images = null;
+                } catch (error) {
+                    alert('Gagal menambahkan data');
+                    console.error(error);
+                }
             }
         }
         

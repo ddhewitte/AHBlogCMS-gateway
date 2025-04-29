@@ -26,4 +26,26 @@ class BlogController extends Controller
     {
         return view( view: 'blog/blog_add' );
     }
+
+    //add data process
+    public function addProcess(Request $request)
+    {
+        $data = $request->validate([
+            'blog_title' => 'required',
+            'blog_content' => 'required',
+            'blog_author' => 'required',
+            'blog_images' => 'nullable|image|max:2048',
+        ]);
+
+        if ($request->hasFile('blog_images')) {
+            $data['blog_images'] = $request->file('blog_images')->store('blogs', 'public');
+        }
+
+        //add status
+        $data['status'] = 1;
+
+        Blog::create($data);
+
+        return response()->json(['success' => true]);
+    }
 }

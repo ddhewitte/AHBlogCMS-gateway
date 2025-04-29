@@ -22,22 +22,22 @@
                 <tr>
                     <td class="p-4">Blog Title</td>
                     <td class="p-4">:</td>
-                    <td class="p-4"><input type="text" name="blog_title" class="block border  min-w-0 grow py-1.5 pr-3 pl-1 text-base text-gray-900 placeholder:text-gray-400 focus:outline-none sm:text-sm/6"></td>
+                    <td class="p-4"><input type="text" name="blog_title" class="block border  min-w-0 w-100 grow py-1.5 pr-3 pl-1 text-base text-gray-900 placeholder:text-gray-400 focus:outline-none sm:text-sm/6"></td>
                 </tr>
                 <tr>
                     <td class="p-4">Blog Content</td>
                     <td class="p-4">:</td>
-                    <td class="p-4"><input type="text" name="blog_title" class="block border  min-w-0 grow py-1.5 pr-3 pl-1 text-base text-gray-900 placeholder:text-gray-400 focus:outline-none sm:text-sm/6"></td>
+                    <td class="p-4"><textarea name="blog_content" class="block border  min-w-0 w-100 grow py-1.5 pr-3 pl-1 text-base text-gray-900 placeholder:text-gray-400 focus:outline-none sm:text-sm/6"></textarea></td>
                 </tr>
                 <tr>
                     <td class="p-4">Blog Author</td>
                     <td class="p-4">:</td>
-                    <td class="p-4"><input type="text" name="blog_title" class="block border  min-w-0 grow py-1.5 pr-3 pl-1 text-base text-gray-900 placeholder:text-gray-400 focus:outline-none sm:text-sm/6"></td>
+                    <td class="p-4"><input type="text" name="blog_author" class="block border  min-w-0 w-100 grow py-1.5 pr-3 pl-1 text-base text-gray-900 placeholder:text-gray-400 focus:outline-none sm:text-sm/6"></td>
                 </tr>
                 <tr>
                     <td class="p-4">Blog Images</td>
                     <td class="p-4">:</td>
-                    <td class="p-4"><input type="text" name="blog_title" class="block border  min-w-0 grow py-1.5 pr-3 pl-1 text-base text-gray-900 placeholder:text-gray-400 focus:outline-none sm:text-sm/6"></td>
+                    <td class="p-4"><input type="file" name="blog_images" class="block border  min-w-0 w-100 row py-1.5 pr-3 pl-1 text-base text-gray-900 placeholder:text-gray-400 focus:outline-none sm:text-sm/6"></td>
                 </tr>
                 <tr>
                     <td class="p-4"></td>
@@ -48,19 +48,5 @@
         </table>
     </div>
 </div>
-<script>
-function blogData() {
-    return {
-        blogs: [],
-        refreshData() {
-            fetch('/blog/refresh')
-                .then(res => res.json())
-                .then(data => {
-                    this.blogs = data;
-                });
-        }
-    }
-}
-</script>
 </body>
 </html>

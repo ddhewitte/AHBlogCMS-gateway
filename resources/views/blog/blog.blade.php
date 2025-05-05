@@ -16,19 +16,19 @@
         </div>
     </div>
 
-    <div class="overflow-x-auto rounded-lg shadow-md">
-        <table class="min-w-full bg-white border border-gray-200 text-sm text-left">
+    <div class="overflow-x-auto border rounded-lg shadow-md">
+        <table class="min-w-full bg-white border-gray-200 text-sm text-left">
             <thead class="bg-gray-400 text-white">
                 <tr>
-                    <th class="px-4 py-3 border-b">Title</th>
-                    <th class="px-4 py-3 border-b">Author</th>
-                    <th class="px-4 py-3 border-b">Date Time</th>
-                    <th class="px-4 py-3 border-b">Action</th>
+                    <th class="px-4 py-3">Title</th>
+                    <th class="px-4 py-3">Author</th>
+                    <th class="px-4 py-3">Date Time</th>
+                    <th class="px-4 py-3">Action</th>
                 </tr>
             </thead>
             <tbody>
-                <template x-for="blog in blogs" :key="blog.id">
-                    <tr class="hover:bg-gray-100 border-b">
+                <template x-for="(blog, index) in blogs" :key="blog.id">
+                    <tr class="hover:bg-gray-100" :class="index === blogs.length - 1 ? '' : 'border-b'">
                         <td class="px-4 py-2" x-text="blog.blog_title"></td>
                         <td class="px-4 py-2" x-text="blog.blog_author"></td>
                         <td class="px-4 py-2" x-text="blog.blog_created_at"></td>

@@ -13,11 +13,11 @@
     <div class="flex justify-between items-center mb-4">
         <h2 class="text-xl font-semibold text-gray-700">Add Data User</h2>
         <div class="flex space-x-2">
-            <button class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"><a href="{{ url('/') }}">Back</a></button>
+            <button class="px-4 py-2 bg-gray-600 text-white rounded hover:bg-gray-500 transition"><a href="{{ url('/') }}">Back</a></button>
         </div>
     </div>
    
-    <div class="overflow-x-auto rounded-lg shadow-md">
+    <div class="overflow-x-auto rounded-lg border shadow-md">
         <table class="min-w-full bg-white border border-gray-200 text-sm text-left">
             <tbody>
                 <tr>

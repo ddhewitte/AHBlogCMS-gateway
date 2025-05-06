@@ -11,8 +11,8 @@
     <div class="flex justify-between items-center mb-4">
         <h2 class="text-xl font-semibold text-gray-700">Data User</h2>
         <div class="flex space-x-2">
-            <button class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"><a href="{{ url('blog/add') }}">Add New</a></button>
-            <button @click="refreshData" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition">Refresh</button>
+            <button class="px-4 py-2 bg-gray-600 text-white rounded hover:bg-gray-500 transition"><a href="{{ url('blog/add') }}">Add New</a></button>
+            <button @click="refreshData" class="px-4 py-2 bg-gray-600 text-white rounded hover:bg-gray-500 transition">Refresh</button>
         </div>
     </div>
 
@@ -32,7 +32,7 @@
                         <td class="px-4 py-2" x-text="blog.blog_title"></td>
                         <td class="px-4 py-2" x-text="blog.blog_author"></td>
                         <td class="px-4 py-2" x-text="blog.blog_created_at"></td>
-                        <td class="px-4 py-2"><button>Ubah Blog</button> | <button>Hapus</button></td>
+                        <td class="px-4 py-2"><button class="px-4 py-2 bg-gray-600 text-white rounded hover:bg-gray-500 transition">Ubah Blog</button> | <button class="px-4 py-2 bg-gray-600 text-white rounded hover:bg-gray-500 transition">Hapus</button></td>
                     </tr>
                 </template>
 

@@ -22,7 +22,7 @@
                 <tr>
                     <th class="px-4 py-3">Title</th>
                     <th class="px-4 py-3">Author</th>
-                    <th class="px-4 py-3">Date Time</th>
+                    <th class="px-4 py-3">Date</th>
                     <th class="px-4 py-3">Action</th>
                 </tr>
             </thead>
@@ -34,7 +34,7 @@
                         <td class="px-4 py-2" x-text="new Date(blog.created_at).toLocaleDateString('id-ID', {
     day: '2-digit', month: 'long', year: 'numeric'
 })"></td>
-                        <td class="px-4 py-2"><button class="px-4 py-2 bg-gray-600 text-white rounded hover:bg-gray-500 transition">Ubah Blog</button> | <button class="px-4 py-2 bg-gray-600 text-white rounded hover:bg-gray-500 transition">Hapus</button></td>
+                        <td class="px-4 py-2"><button class="px-4 py-2 bg-gray-600 text-white rounded hover:bg-gray-500 transition"><a :href="'/blog/edit/' + blog.id">Ubah Blog</a></button> | <button class="px-4 py-2 bg-gray-600 text-white rounded hover:bg-gray-500 transition">Hapus</button></td>
                     </tr>
                 </template>
 

@@ -31,7 +31,9 @@
                     <tr class="hover:bg-gray-100" :class="index === blogs.length - 1 ? '' : 'border-b'">
                         <td class="px-4 py-2" x-text="blog.blog_title"></td>
                         <td class="px-4 py-2" x-text="blog.blog_author"></td>
-                        <td class="px-4 py-2" x-text="blog.blog_created_at"></td>
+                        <td class="px-4 py-2" x-text="new Date(blog.created_at).toLocaleDateString('id-ID', {
+    day: '2-digit', month: 'long', year: 'numeric'
+})"></td>
                         <td class="px-4 py-2"><button class="px-4 py-2 bg-gray-600 text-white rounded hover:bg-gray-500 transition">Ubah Blog</button> | <button class="px-4 py-2 bg-gray-600 text-white rounded hover:bg-gray-500 transition">Hapus</button></td>
                     </tr>
                 </template>

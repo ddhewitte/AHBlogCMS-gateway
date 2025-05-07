@@ -48,4 +48,9 @@ class BlogController extends Controller
 
         return response()->json(['success' => true]);
     }
+
+    public function edit($id)
+    {
+        return view('blog/blog_edit', ['blogId' => $id]);
+    }
 }

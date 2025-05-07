@@ -52,8 +52,12 @@
 </body>
 <script>
     function blogDataInput( $blogId ){
-        console.log($blogId);
-        return;  
+        return {
+            form{}, //define variable2nya
+            async init(){}, //get product by id untuk existing datanya
+            handleFileUpload(event){}, //handle file
+            async submitForm(){} //submit edit
+        }
     }
 </script>
 </html>

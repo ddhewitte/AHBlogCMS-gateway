@@ -8,7 +8,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body>
-<div class="container mx-auto px-4 py-6" x-data="blogDataInput({{ $blogId }})">
+<div class="container mx-auto px-4 py-6" x-data="blogDataEdit({{ $blogId }})">
 
     <div class="flex justify-between items-center mb-4">
         <h2 class="text-xl font-semibold text-gray-700">Add Data User</h2>
@@ -51,12 +51,21 @@
 </div>
 </body>
 <script>
-    function blogDataInput( $blogId ){
+    function blogDataEdit( blogId ){
         return {
-            form{}, //define variable2nya
-            async init(){}, //get product by id untuk existing datanya
-            handleFileUpload(event){}, //handle file
-            async submitForm(){} //submit edit
+            form: {
+                blog_title : '',
+                blog_content: '',
+                blog_author: '',
+                blog_images: ''
+            }, 
+            async init(){
+                const res = await fetch(`/blog/editData/${blogId}`);
+                const getData = await res.json();
+                console.log(getData);
+            }, 
+            handleFileUpload(event){}, 
+            async submitForm(){}
         }
     }
 </script>

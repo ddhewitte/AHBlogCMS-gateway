@@ -16,3 +16,4 @@ Route::get('/blog/refresh', [\App\Http\Controllers\BlogController::class, 'refre
 Route::get('/blog/add', [\App\Http\Controllers\BlogController::class, 'add']);
 Route::post('/blog/add/process', [\App\Http\Controllers\BlogController::class, 'addProcess']);
 Route::get('/blog/edit/{id}', [\App\Http\Controllers\BlogController::class, 'edit']);
+Route::get('/blog/editData/{id}', [\App\Http\Controllers\BlogController::class, 'editData']);

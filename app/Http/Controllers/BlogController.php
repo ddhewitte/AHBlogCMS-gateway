@@ -53,4 +53,10 @@ class BlogController extends Controller
     {
         return view('blog/blog_edit', ['blogId' => $id]);
     }
+
+    public function editData($id)
+    {
+        $blog = Blog::findOrFail($id);
+        return response()->json($blog);
+    }
 }

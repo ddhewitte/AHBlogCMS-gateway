@@ -36,7 +36,7 @@
                     <td class="p-4"><input type="text" x-model="form.blog_author" name="blog_author" class="block border  min-w-0 w-100 grow py-1.5 pr-3 pl-1 text-base text-gray-900 placeholder:text-gray-400 focus:outline-none sm:text-sm/6"></td>
                 </tr>
                 <tr>
-                    <td class="p-4">Blog Images</td>
+                    <td class="p-4">Blog Images (*skip if no need update)</td>
                     <td class="p-4">:</td>
                     <td class="p-4"><input @change="handleFileUpload" type="file" name="blog_images" class="block border  min-w-0 w-100 row py-1.5 pr-3 pl-1 text-base text-gray-900 placeholder:text-gray-400 focus:outline-none sm:text-sm/6"></td>
                 </tr>
@@ -57,15 +57,51 @@
                 blog_title : '',
                 blog_content: '',
                 blog_author: '',
-                blog_images: ''
+                blog_images: null
             }, 
             async init(){
+                //API GET
                 const res = await fetch(`/blog/editData/${blogId}`);
                 const getData = await res.json();
-                console.log(getData);
+                this.form.blog_title = getData.blog_title;
+                this.form.blog_content = getData.blog_content;
+                this.form.blog_author = getData.blog_author;
             }, 
-            handleFileUpload(event){}, 
-            async submitForm(){}
+            handleFileUpload(event){
+                this.form.blog_images = event.target.files[0];
+            }, 
+            async submitForm(){
+                //mapping
+                const formData = new FormData();
+                formData.append('blog_title', this.form.blog_title);
+                formData.append('blog_content', this.form.blog_content);
+                formData.append('blog_author', this.form.blog_author);
+
+                //mapping images
+                if(this.form.blog_images){
+                    formData.append('blog_images', this.form.blog_images);
+                }
+
+                //submit - API POST
+                try{
+                    const response = await fetch(`/blog/editDataProcess/${blogId}`, {
+                        method : 'POST',
+                        headers : {
+                            'X-CSRF-TOKEN' : document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                        },
+                        body : formData
+
+                    })
+
+                    if(response.ok){
+                        window.location.href = '/';
+                    }
+
+                }catch(e){
+                    console.error(error);
+                }
+
+            }
         }
     }
 </script>

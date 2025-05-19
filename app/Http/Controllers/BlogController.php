@@ -59,4 +59,36 @@ class BlogController extends Controller
         $blog = Blog::findOrFail($id);
         return response()->json($blog);
     }
+
+    public function editDataProcess(Request $request, $id)
+    {
+        //validasi
+        $request->validate([
+            'blog_title' => 'required|string|max:255',
+            'blog_content' => 'required|string',
+            'blog_author' => 'required|string|max:100',
+            'blog_images' => 'nullable|image|mimes:jpeg,png,jpg|max:2048', //max 2048 = 2MB
+        ]);
+        
+        //mapping
+        $blog = Blog::findOrFail($id);
+        $blog->blog_title = $request->blog_title;
+        $blog->blog_content = $request->blog_content;
+        $blog->blog_author = $request->blog_author;
+
+        //mapping images
+        if($request->hasFile('blog_images')){
+            $file = $request->file('blog_images');
+            $filename = time() .'_'.$file->getClientOriginalName();
+            $file->move(public_path('uploads'), $filename);
+            //mapping blog images name
+            $blog->blog_images = $filename;
+        }
+
+        //submit edit
+        $blog->save();
+
+        //submit response
+        return response()->json(['message' => 'data berhasil di update']);
+    }
 }

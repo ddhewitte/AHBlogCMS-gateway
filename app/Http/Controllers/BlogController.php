@@ -91,4 +91,14 @@ class BlogController extends Controller
         //submit response
         return response()->json(['message' => 'data berhasil di update']);
     }
+
+    public function deleteDataProcess($id){
+        //cek existing
+        $blog = Blog::findOrFail($id);
+        //delete
+        $blog->delete();
+
+        //response
+        return response()->json(['message' => 'data berhasil dihapus!']);
+    }
 }

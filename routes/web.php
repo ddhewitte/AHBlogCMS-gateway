@@ -18,3 +18,4 @@ Route::post('/blog/add/process', [\App\Http\Controllers\BlogController::class, '
 Route::get('/blog/edit/{id}', [\App\Http\Controllers\BlogController::class, 'edit']);
 Route::get('/blog/editData/{id}', [\App\Http\Controllers\BlogController::class, 'editData']);
 Route::post('/blog/editDataProcess/{id}', [\App\Http\Controllers\BlogController::class, 'editDataProcess']);
+Route::get('/blog/deleteDataProcess/{id}', [\App\Http\Controllers\BlogController::class, 'deleteDataProcess']);

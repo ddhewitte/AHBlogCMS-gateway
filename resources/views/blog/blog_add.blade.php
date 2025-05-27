@@ -89,7 +89,7 @@
                     this.form.blog_author = '';
                     this.form.blog_images = null;
                 } catch (error) {
-                    alert('Gagal menambahkan data');
+                    alert('Gagal menambahkan data, isi semua !');
                     console.error(error);
                 }
             }
